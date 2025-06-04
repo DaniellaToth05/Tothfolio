@@ -69,7 +69,15 @@ body::before {
     font-size: 1.2rem;
     font-weight: 600;
     letter-spacing: -0.02em;
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    transition: color 0.3s ease;
 }
+
+.logo:hover {
+    color: rgba(255, 255, 255, 1);
+}
+
 
 .nav-links {
     display: flex;
@@ -86,7 +94,7 @@ body::before {
 }
 
 .nav-links a:hover {
-    color: rgba(255, 255, 255, 1);
+    color: rgba(255, 255, 255, 20);
 }
 
 .nav-links a::after {
