@@ -490,3 +490,55 @@ body::before {
         font-size: 2rem;
     }
 }
+
+.experience-card {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  .experience-card:hover h3 {
+    color: rgba(255, 120, 50, 0.95);
+  }
+
+  .report {
+    max-width: 1050px;
+    margin: 0 auto;
+    }
+
+    .report-section {
+        margin-bottom: 90px;
+    }
+
+    .report-section h3 {
+        font-size: 1.6rem;
+        font-weight: 400;
+        letter-spacing: -0.01em;
+        margin-bottom: 25px;
+        color: rgba(255, 255, 255, 0.95);
+    }
+    .report-section p {
+        font-size: 1.05rem;
+        line-height: 1.85;
+        color: rgba(255, 255, 255, 0.65);
+        margin-bottom: 22px;
+    }
+
+    .report-section:not(:last-child)::after {
+        content: "";
+        display: block;
+        width: 80px;
+        height: 1px;
+        background: rgba(255, 120, 50, 0.25);
+        margin-top: 50px;
+    }
+
+    .animate-on-scroll {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .animate-on-scroll.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }

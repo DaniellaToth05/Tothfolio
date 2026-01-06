@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DBM Systems Co-op Experience</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="icon" type="image/png" href="../images/favicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="gradient-bg"></div>
+
+<nav class="nav">
+    <a href="../index.html" class="logo">Daniella Toth</a>
+    <div class="nav-links">
+        <a href="../index.html#experience">Experience</a>
+        <a href="../index.html#contact">Contact</a>
+    </div>
+</nav>
+
+<section class="section report">
+
+    <h2 class="section-title">DBM Systems | Front-End Web Developer (Co-op)</h2>
+
+    <div class="report-section animate-on-scroll">
+        <h3>Introduction</h3>
+        <p>During my Fall 2025 co-op term, I worked as a Front-End Web Developer at DBM Systems Ltd., in the Region of Waterloo. From August to December, I helped build the front end of DBM’s Sales and Operations Planning (S&OP) web application, which supports how companies plan and review their demand and supply.</p>
+        <p>This section outlines my experience during the term, including the work I contributed to, the skills I developed, and what I learned about building software that needs to be clear, reliable, and usable for people working with large amounts of data.</p>
+    </div>
+
+    <div class="report-section animate-on-scroll">
+        <h3>Information on the Employer</h3>
+        <p>DBM Systems Ltd. is a Canadian consulting company based in the Region of Waterloo that specializes in Sales and Operations Planning (S&OP). DBM works with organizations to support how they plan demand, manage supply, and review operational performance using structured planning tools.</p>
+        <p>The applications developed at DBM are not consumer-facing products, but internal tools used by planners and decision-makers within companies. Much of the work involves presenting large amounts of numerical data in a way that is readable, consistent, and easy to interact with. During my term, I saw firsthand how important clear interfaces and predictable behavior are when users rely on the software to understand their data and make informed decisions.</p>
+        <p>One detail that stood out to me during my time at DBM was the company’s strong connection to student learning. I learned that members of the leadership team began their careers at DBM as co-op students, which reflects a long-standing commitment to developing talent over time. Working in an environment where student contributions are taken seriously reinforced the idea that my work was meaningful and that learning and growth are valued alongside delivery.</p>
+    </div>
+
+    <div class="report-section animate-on-scroll">
+        <h3>Goals</h3>
+        <p>At the start of my work term, I set a few goals to guide what I wanted to get out of the experience. These focused on improving my front-end development skills, learning how to work within a large codebase, and becoming more comfortable communicating about my work in a professional setting.</p>
+        <p>One of my main goals was to strengthen my front-end skills using Svelte. I wanted hands-on experience building interfaces that were clear, reusable, and practical for real users, especially spreadsheet-style components. Over the term, I worked on one major page and two smaller pages of the S&OP planning tool, focusing on reusable row and cell components and improving code structure. With feedback from my supervisor, I was able to improve both usability and maintainability, and I feel I made strong progress toward this goal.</p>
+        <p>I also wanted to get better at problem-solving in a large codebase. This meant learning how to understand how different parts of the system fit together and how changes in one area could affect others. Through independent troubleshooting and iteration, I became more confident breaking problems down and completing features with minimal supervision.</p>
+        <p>Finally, I aimed to improve my communication skills by being more open about my progress and questions. By sharing regular updates and speaking up during meetings, I became more comfortable explaining what I was working on and why. While this is still an area I am developing, I noticed clear improvement by the end of the term.</p>
+    </div>
+
+    <div class="report-section animate-on-scroll">
+        <h3>Job Description</h3>
+        <p>My role at DBM Systems focused on building the main table functionality used throughout the S&OP planning application. Most of my work involved creating and improving tables that allow users to interact with large amounts of planning data in a way that feels familiar and easy to use.</p>
+        <p>I started by building a base table cell component that handled shared behaviour such as focus, editing, and styling. From there, I created specific cell types for numbers, strings, and percentages, each with its own formatting and validation rules. These cells were reused across many different pages, so they needed to behave consistently no matter where they appeared.</p>
+        <p>A large part of my work involved adding Excel-like behaviour to the tables and improving how they handled layout. This included keyboard navigation between cells, selecting and highlighting multiple cells, copying and pasting values, inline editing, and dynamic resizing so that column widths could adjust based on the largest content in a section. Making these features work together required a lot of trial and error, since small changes in one interaction could affect how the table behaved elsewhere.</p>
+        <p>This role required me to learn new tools quickly. I had no prior experience with Svelte before this term, so I learned it on the job. While my classes gave me a general background in front-end development, working with Svelte in a larger application helped me better understand how components, state, and user interactions come together in a real system.</p>
+    </div>
+
+    <div class="report-section animate-on-scroll">
+        <h3>Conclusion</h3>
+        <p>This work term gave me valuable experience working on a real web application that is used beyond a classroom setting. Through my role at DBM Systems, I strengthened my front-end skills, learned how to work within a large codebase, and gained a better understanding of how users interact with data-heavy tools.</p>
+        <p>Overall, this experience helped me see how the concepts I learn in school apply in practice, while also pushing me to learn new tools and approaches on the job. It increased my confidence as a developer and helped clarify the type of work I am interested in pursuing in future co-op terms and my career.</p>
+    </div>
+
+    <div class="report-section animate-on-scroll">
+        <h3>Acknowledgements</h3>
+        <p>I would like to thank Adrian Kleinikkink and Wendy Smith for interviewing me and for the opportunity to work at DBM Systems. I am also grateful to Kate McRoberts and the University of Guelph co-op coordinators for their support and guidance throughout the co-op process.</p>
+    </div>
+
+</section>
+
+<script>
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+            }
+        });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll(".animate-on-scroll").forEach(el => {
+        observer.observe(el);
+    });
+</script>
+
+</body>
+</html>
