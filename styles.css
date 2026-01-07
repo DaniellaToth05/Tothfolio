@@ -554,3 +554,44 @@ body::before {
         width: auto;
         flex-shrink: 0;
     }
+    .inline-image {
+        margin: 2rem auto 0 auto;
+        text-align: center;
+    }
+
+    .inline-image img {
+        width: 100%;
+        border-radius: 10px;
+    }
+
+    .inline-image.small {
+        max-width: 320px; 
+    }
+
+    .inline-image figcaption {
+        margin-top: 0.5rem;
+        font-size: 0.8rem;
+        color: var(--text-muted);
+        line-height: 1.4;
+    }
+
+    .image-pair {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+        max-width: 900px;
+        margin: 0 auto;
+    }
+
+    .image-pair img {
+        width: 100%;
+        border-radius: 12px;
+        display: block;
+    }
+
+    @media (max-width: 768px) {
+        .image-pair {
+            grid-template-columns: 1fr;
+        }
+    }
+
