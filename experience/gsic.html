@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GSIC Analyst Experience</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="icon" type="image/png" href="../images/favicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="gradient-bg"></div>
+
+<nav class="nav">
+    <a href="../index.html" class="logo">Daniella Toth</a>
+    <div class="nav-links">
+        <a href="../index.html#experience">Experience</a>
+        <a href="../index.html#contact">Contact</a>
+    </div>
+</nav>
+
+<section class="section report">
+
+    <h2 class="section-title">
+        <span>Guelph Student Investment Council | Analyst</span>
+    </h2>
+
+    <div class="report-section animate-on-scroll">
+        <h3>Overview</h3>
+        <p>
+            I am an Analyst with the Guelph Student Investment Council (GSIC), a student-managed
+            investment fund at the University of Guelph. As part of the council, I contribute to
+            equity research and investment decision-making through collaborative analysis and
+            presentations.
+        </p>
+    </div>
+
+    <div class="report-section animate-on-scroll">
+        <h3>Role & Responsibilities</h3>
+        <p>
+            As an analyst, I research publicly traded companies and evaluate them as potential
+            investment opportunities for the fund. This role involves both independent analysis
+            and close collaboration with other analysts.
+        </p>
+
+        <div class="list-wrap">
+            <ul class="bullet-list">
+                <li>Analyze business models, competitive positioning, and industry trends</li>
+                <li>Review financial statements and key performance metrics</li>
+                <li>Assess company performance and potential investment risks</li>
+                <li>Collaborate with other analysts to develop company pitch decks</li>
+                <li>Present findings and recommendations to the council</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="report-section animate-on-scroll">
+        <h3>What I’ve Gained</h3>
+        <p>
+            Through GSIC, I have strengthened my analytical thinking, financial literacy, and
+            presentation skills. The experience has also helped me become more comfortable
+            working in a team environment where ideas are discussed, challenged, and refined.
+        </p>
+    </div>
+
+</section>
+
+<script>
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+            }
+        });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll(".animate-on-scroll").forEach(el => {
+        observer.observe(el);
+    });
+</script>
+
+</body>
+</html>
