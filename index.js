@@ -1,5 +1,7 @@
 // entry point for landing page
 
+
+// INTRO BUFFER
 // intro: shooting star across the screen for loading time
 const intro = document.getElementById('intro');
 const canvas = document.getElementById('intro-canvas');
@@ -147,3 +149,126 @@ setTimeout(function() {
     intro.classList.add('fade-out');
     setTimeout(function() { animationStopped = true; }, 1000);
 }, 1400);
+
+
+
+// LANDING PAGE
+
+// star field behind main content of landing page
+const starCanvas = document.getElementById('star-canvas');
+const starContext = starCanvas.getContext('2d');
+
+let starCanvasWidth, starCanvasHeight;
+let stars = [];
+let starFrame = 0;
+
+function resizeStarCanvas() {
+    starCanvasWidth = starCanvas.width = window.innerWidth;
+    starCanvasHeight = starCanvas.height = window.innerHeight;
+}
+
+function createStars() {
+    const random = Math.random();
+
+    let brightness;
+    if (random > 0.97) {
+        brightness = 2;
+    } else if (random > 0.83) {
+        brightness = 1;
+    } else {
+        brightness = 0;
+    }
+
+    let radius;
+    if (brightness === 2) {
+        radius = 1.0;
+    } else if (brightness === 1) {
+        radius = 0.6;
+    } else {
+        radius = Math.random() * 0.4 + 0.1;
+    }
+
+    let opacity;
+    if (brightness === 2) {
+        opacity = Math.random() * 0.3 + 0.65;
+    } else if (brightness === 1) {
+        opacity = Math.random() * 0.25 + 0.4;
+    } else {
+        opacity = Math.random() * 0.28 + 0.12;
+    }
+
+    // cool stars are blue-white, warm stars are yellow-white
+    const isCool = Math.random() > 0.55;
+
+    return{
+        x: Math.random() * starCanvasWidth,
+        y: Math.random() * starCanvasHeight * 0.72,
+        radius: radius,
+        opacity: opacity,
+        twinkleSpeed: Math.random() * 0.007 + 0.002,
+        twinklePhase: Math.random() * Math.PI * 2,
+        brightness: brightness,
+        isCool: isCool
+    };
+}
+
+function initializeStars(){
+    stars = Array.from({ length: 300}, createStars);
+}
+
+function makeStarField(){
+    starContext.clearRect(0, 0, starCanvasWidth, starCanvasHeight);
+    starFrame += 0.016;
+
+    stars.forEach(function(star){
+        const twinkledOpacity = star.opacity * (0.6 + 0.4 * Math.sin(starFrame * star.twinkleSpeed + star.twinklePhase));
+
+        let colour;
+        if(star.isCool){
+            colour = 'rgba(200, 220, 255, ' + twinkledOpacity + ')';
+        } else {
+            colour = 'rgba(255, 252, 240, ' + twinkledOpacity + ')';
+        }
+
+        if(star.brightness === 2){
+            // larger stars have a little flare 
+            starContext.fillStyle = colour;
+            starContext.beginPath();
+            starContext.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+            starContext.fill();
+
+            let flareColour;
+            if(star.isCool){
+                flareColour = 'rgba(200, 220, 255, ' + (twinkledOpacity * 0.3) + ')';
+            }  else {
+                flareColour = 'rgba(255, 252, 220, ' + (twinkledOpacity * 0.3) + ')';
+            }
+
+            starContext.strokeStyle = flareColour;
+            starContext.lineWidth = 0.4;
+            starContext.beginPath();
+            starContext.moveTo(star.x -4, star.y);
+            starContext.lineTo(star.x + 4, star.y);
+            starContext.stroke();
+            starContext.beginPath();
+            starContext.moveTo(star.x, star.y - 4);
+            starContext.lineTo(star.x, star.y + 4);
+            starContext.stroke();
+        } else {
+            // smaller stars are just points
+            starContext.fillStyle = colour;
+            starContext.fillRect(star.x - star.radius, star.y - star.radius, star.radius * 2, star.radius * 2);
+        }
+    });
+
+    requestAnimationFrame(makeStarField);
+}
+
+window.addEventListener('resize', function(){
+    resizeStarCanvas();
+    initializeStars();
+});
+
+resizeStarCanvas();
+initializeStars();
+makeStarField();
