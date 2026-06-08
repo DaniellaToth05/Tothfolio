@@ -87,7 +87,7 @@ function startIntro(){
     });
 
     if(!starOffScreen){
-        trailPositions.push({ x: starX, y: starY});
+        trailPositions.push({ x: starX, y: starY, a:1.0});
         if(trailPositions.length > MAX_TRAIL_LENGTH){
             trailPositions.shift();
         }
@@ -127,9 +127,14 @@ function startIntro(){
 
     } else {
         // once the star if off screen, let the trail fade out and then stop the animation
+        trailPositions.forEach(p => p.a *= 0.88);
+
         for (let i = 1; i < trailPositions.length; i++){
             const progress = i / trailPositions.length;
-            const trailOpacity = progress * 0.5;
+            const trailOpacity = trailPositions[i].a * progress;
+            if(trailOpacity < 0.01){
+                continue;
+            }
             context.beginPath();
             context.moveTo(trailPositions[i-1].x, trailPositions[i-1].y);
             context.lineTo(trailPositions[i].x, trailPositions[i].y);
