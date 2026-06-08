@@ -33,3 +33,24 @@ body {
     cursor: none;
     user-select: none;
 }
+
+#intro {
+    position: fixed;
+    inset: 0;
+    z-index: 9000;
+    background: var(--background);
+    overflow: hidden;
+    transition: opacity 1s ease;
+}
+
+#intro.fade-out {
+    opacity: 0;
+    pointer-events: none;
+}
+
+#intro-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
