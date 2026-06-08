@@ -24,7 +24,17 @@
       <div id="earth-glow"></div>
       <div id="earth-wrap">
         <!-- earth model -->
-         <model-viewer id="earth-mv" src="assets/model-4.glb" auto-rotate rotation-per-second="1.5deg" environment-image="neutral" shadow-intensity="0" interaction-prompt="none" camera-controls="false" disable-top disable-zoom alt="Earth"></model-viewer>
+         <model-viewer id="earth-mv" src="assets/model-4.glb" auto-rotate rotation-per-second="1.5deg" environment-image="neutral" shadow-intensity="0" interaction-prompt="none" camera-controls="false" disable-tap disable-zoom camera-orbit="0deg 88deg auto" camera-target="0m 6.35m 0.74m" field-of-view="18deg" alt="Earth"></model-viewer>
+      </div>
+
+      <div id="rocket-on-earth">
+        <div id="rocket-exhaust">
+          <div class="exhaust-flame flame-outer"></div>
+          <div class="exhaust-flame flame-mid"></div>
+          <div class="exhaust-flame flame-core"></div>
+        </div>
+        <model-viewer id="rocket-mv" src="assets/Saturn-V.glb" environment-image="neutral" shadow-intensity="0.5" shadow-softness="0.8" exposure="1.2" interaction-prompt="none" camera-controls="none" disable-tap disable-zoom alt="Saturn-V Rocket"></model-viewer>
+        <div id="launch-pad"></div>
       </div>
       <div id="horizon-haze"></div>
      </div>
