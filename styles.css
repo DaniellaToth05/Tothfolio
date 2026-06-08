@@ -10,3 +10,26 @@ html, body {
     overflow: hidden;
     background: #010108;
 }
+
+:root {
+    /* set up colour palette */
+    --background: #010108;
+    --ice: #a8c8e8;
+    --steel: #6b8fa8;
+    --frost: #d4e8f8;
+    --gold: #c8a96e;
+    --white: #e8f0f8;
+    --white-dim: rgba(232, 240, 248, 0.5);
+
+    /* fonts*/
+    --mono: 'Share Tech Mono', monospace;
+    --display: 'VT323', monospace;
+    --serif: 'Cormorant Garant', serif;
+}
+
+body {
+    font-family: var(--mono);
+    color: var(--white);
+    cursor: none;
+    user-select: none;
+}
