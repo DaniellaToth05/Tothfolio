@@ -1,7 +1,11 @@
+body {
+    background: var(--background);
+}
+
 #boot {
     position: fixed;
     inset: 0;
-    background: var(--bg);
+    background: var(--background);
     z-index: 100000;
     display: flex;
     flex-direction: column;
@@ -63,4 +67,46 @@
 
 @keyframes blink {
     50% { opacity: 0; }
+}
+
+#star-canvas {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+}
+
+#galaxy {
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.meteor {
+    position: absolute;
+    transform: rotate(45deg);
+    width: 2px;
+    height: 50px;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));
+    animation: meteor 3s linear infinite;
+    opacity: 0;
+}
+
+@keyframes meteor {
+    0% {
+        opacity: 0;
+        transform: translateX(0) translateY(0) rotate(45deg);
+    }
+    10% {
+        opacity: 1;
+    }
+    70% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(-200px) translateY(200px) rotate(45deg);
+    }
 }
