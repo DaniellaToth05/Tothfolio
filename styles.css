@@ -109,7 +109,7 @@ body {
     z-index: 1;
     pointer-events: none;
 }
-
+/* 
 #horizon-haze{
     position: absolute;
     bottom: 0;
@@ -124,7 +124,7 @@ body {
         transparent 100%);
     z-index: 3;
     pointer-events: none;
-}
+} */
 
 #earth-mv{
     width: 100%;
