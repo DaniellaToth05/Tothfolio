@@ -277,3 +277,65 @@ window.addEventListener('resize', function(){
 resizeStarCanvas();
 initializeStars();
 makeStarField();
+
+// rocket launch sequence
+const launchButton = document.getElementById('launch-btn');
+const rocketNode = document.getElementById('rocket-on-earth');
+const rocketExhaust = document.getElementById('rocket-exhaust');
+const landingBlock = document.getElementById('landing-info');
+const contentBlock = document.getElementById('content');
+const transitionOverlay = document.getElementById('transition-overlay');
+
+launchButton.addEventListener('click', function(){
+    launchButton.style.pointerEvents = 'none';
+    rocketExhaust.style.opacity = '1';
+    launchButton.querySelector('span').setContent = '↑ Launching...';
+
+    setTimeout(function(){
+        landingBlock.classList.add('content-fadeout');
+        rocketNode.classList.add('rocket-liftoff');
+        spawnSmoke(rocketNode);
+
+        setTimeout(function(){
+            contentBlock.classList.add('screen-zoomout');
+        }, 900);
+
+        setTimeout(function(){
+            transitionOverlay.classList.add('go');
+        }, 2600);
+
+        setTimeout(function(){
+            window.location.href = 'page.html';
+        }, 3500);
+    }, 200);
+});
+
+function spawnSmoke(parent){
+    const smokeInterval = setInterval(function(){
+        const smokePuff = document.createElement('div');
+        smokePuff.className = 'smoke';
+
+        const size = Math.random() * 22 + 10;
+        const driftX = (Math.random() - 0.5) * 70;
+        const driftY = -(Math.random() * 50 + 20);
+
+        smokePuff.style.cssText = 'width:' + size + 'px; height:' + size + 'px; bottom:-10px; left:50%; --dx:' + driftX + 'px; --dy:' + driftY + 'px;';
+
+        parent.appendChild(smokePuff);
+
+        setTimeout(function(){
+            smokePuff.remove();
+        }, 1600);
+    }, 65);
+
+    setTimeout(function() {
+        clearInterval(smokeInterval);
+    }, 1300);
+}
+
+// also let launch be triggered by enter or space on keyboard
+document.addEventListener('keydown', function(e){
+    if(e.key === 'Enter' || e.key === ' '){
+        launchButton.click();
+    }
+});
