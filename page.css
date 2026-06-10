@@ -317,19 +317,16 @@ body {
 }
 
 .planet-node:hover .planet-mv {
-    filter: brightness(1.25) saturate(1.1);
     transform: scale(1.08);
-    box-shadow:
-        0 0 0 2px rgba(168, 200, 232, 0.25),
-        0 0 22px rgba(168, 200, 232, 0.18),
-        0 0 50px rgba(168, 200, 232, 0.08);
+    box-shadow: none;
+    filter: brightness(1.25) saturate(1.1) drop-shadow(0 0 12px rgba(168, 200, 232, 0.6)) drop-shadow(0 0 32px rgba(168, 200, 232, 0.12));
     border-radius: 50%;
 }
 
 /* drop shadow for saturn cus of the rings */
 #planet-saturn:hover .planet-mv {
     box-shadow: none;
-    filter: brightness(1.05) saturate(1.1) drop-shadow(0 0 4px rgba(200, 180, 80, 0.6)) drop-shadow(0 0 22px rgba(200, 180, 80, 0.18));
+    filter: brightness(1.25) saturate(1.1) drop-shadow(0 0 6px rgba(168, 200, 232, 0.6)) drop-shadow(0 0 32px rgba(168, 200, 232, 0.12));
 }
 
 .planet-mv {
