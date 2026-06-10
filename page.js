@@ -171,3 +171,204 @@ setTimeout(function() {
 
     spawnMeteor();
 })();
+
+// map dragging 
+var mapState = (function(){
+    var wrap = document.getElementById('map-wrap');
+    var map = document.getElementById('solar-map');
+
+    function getInitialScale() {
+        if (window.innerWidth < 480) {
+            return 0.2;
+        } else if (window.innerWidth < 768) {
+            return 0.3;
+        } else if (window.innerWidth < 1024) {
+            return 0.5;
+        } else if (window.innerWidth < 1440) {
+            return 0.7;
+        } else {
+            return 0.85;
+        }
+    }
+
+
+    var scale = getInitialScale();
+
+    // center map on sun position at load
+    var posX = window.innerWidth / 2 - 2600 * scale;
+    var posY = window.innerHeight / 2 - 1700 * scale;
+
+    var MIN_SCALE = 0.25;
+    var MAX_SCALE = 2.2;
+
+    var isDragging = false;
+    var lastMouseX = 0;
+    var lastMouseY = 0;
+    var velocityX = 0;
+    var velocityY = 0;
+    var momentumRequest = null;
+    var isLocked = false;
+
+    function applyTransform(animate) {
+        if (animate) {
+            map.style.transition = 'transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+        } else {
+            map.style.transition = 'none';
+        }
+        map.style.transform = 'translate(' + posX + 'px, ' + posY + 'px) scale(' + scale + ')';
+
+        // update zoom percentage display
+        document.getElementById('zoom-value').textContent = Math.round(scale * 100) + '%';
+
+        // give position to star parallax
+        window._starOffX = posX;
+        window._starOffY = posY;
+    }
+
+    // initial position
+    setTimeout(function() {
+        applyTransform(false);
+    }, 50);
+
+    // mouse drag
+    wrap.addEventListener('mousedown', function(e) {
+        if(isLocked || e.target.closest('.planet-node')){
+            return;
+        }
+        isDragging = true;
+        lastMouseX = e.clientX;
+        lastMouseY = e.clientY;
+        velocityX = 0;
+        velocityY = 0;
+        wrap.style.cursor = 'grabbing';
+        cancelAnimationFrame(momentumRequest);
+    });
+
+    window.addEventListener('mousemove', function(e){
+        if (!isDragging){
+            return;
+        }
+        velocityX = e.clientX - lastMouseX;
+        velocityY = e.clientY - lastMouseY;
+        posX += velocityX;
+        posY += velocityY;
+        lastMouseX = e.clientX;
+        lastMouseY = e.clientY;
+        applyTransform(false);
+    });
+
+    window.addEventListener('mouseup', function(){
+        if(!isDragging){
+            return;
+        }
+        isDragging = false;
+        wrap.style.cursor = '';
+
+        // slight momentum after mouse releases slowing down after 
+        function applyMomentum(){
+            velocityX *= 0.93;
+            velocityY *= 0.93;
+            if(Math.abs(velocityX) > 0.25 || Math.abs(velocityY) > 0.25){
+                posX += velocityX;
+                posY += velocityY;
+                applyTransform(false);
+                momentumRequest = requestAnimationFrame(applyMomentum);
+            }
+        }
+        momentumRequest = requestAnimationFrame(applyMomentum);
+    });
+
+    // scroll to zoom
+    wrap.addEventListener('wheel', function(e){
+        if(isLocked){
+            return;
+        }
+        e.preventDefault();
+
+        var zoomStep;
+        if (e.deltaY > 0){
+            zoomStep = -0.07;
+        } else {
+            zoomStep = 0.07;
+        }
+
+        var newScale = Math.max(MIN_SCALE, Math.min(MAX_SCALE, scale + zoomStep));
+        var rect = wrap.getBoundingClientRect();
+        var cursorX = e.clientX - rect.left;
+        var cursorY = e.clientY - rect.top;
+
+        // zoom wherever the cursor is
+        posX = cursorX - (cursorX - posX) * (newScale / scale);
+        posY = cursorY - (cursorY - posY) * (newScale / scale);
+        scale = newScale; 
+
+        applyTransform(false);
+    }, {passive: false});
+
+    // zoom buttons
+    document.getElementById('button-zoom-in').addEventListener('click', function() {
+        scale = Math.min(MAX_SCALE, scale + 0.15);
+        applyTransform(true);
+    });
+    document.getElementById('button-zoom-out').addEventListener('click', function() {
+        scale = Math.max(MIN_SCALE, scale - 0.15);
+        applyTransform(true);
+    });
+
+    var lastTouchX = 0;
+    var lastTouchY = 0;
+
+    wrap.addEventListener('touchstart', function(e){
+        if (isLocked || e.target.closest('.planet-node')){
+            return;
+        }
+        isDragging = true;
+        lastTouchX = e.touches[0].clientX;
+        lastTouchY = e.touches[0].clientY;
+        velocityX = 0;
+        velocityY = 0;
+        cancelAnimationFrame(momentumRequest);
+    });
+
+    wrap.addEventListener('touchmove', function(e){
+        if (!isDragging){
+            return;
+        }
+        e.preventDefault();
+        var moveX = e.touches[0].clientX - lastTouchX;
+        var moveY = e.touches[0].clientY - lastTouchY;
+        velocityX = moveX;
+        velocityY = moveY;
+        posX += moveX;
+        posY += moveY;
+        lastTouchX = e.touches[0].clientX;
+        lastTouchY = e.touches[0].clientY;
+        applyTransform(false);
+    }, { passive: false });
+
+    window.addEventListener('touchend', function(){
+        isDragging = false;
+    });
+
+    window.addEventListener('resize', function() {
+        scale = getInitialScale();
+        posX  = window.innerWidth  / 2 - 2600 * scale;
+        posY  = window.innerHeight / 2 - 1700 * scale;
+        applyTransform(false);
+    });
+
+    return {
+        lock: function() {
+            isLocked = true;
+        },
+        unlock: function() {
+            isLocked = false;
+        },
+        navTo: function(targetX, targetY) {
+            posX = window.innerWidth  / 2 - targetX * scale;
+            posY = window.innerHeight / 2 - targetY * scale;
+            map.style.transition = 'transform 0.7s cubic-bezier(0.77, 0, 0.175, 1)';
+            map.style.transform  = 'translate(' + posX + 'px, ' + posY + 'px) scale(' + scale + ')';
+        }
+    };
+})();

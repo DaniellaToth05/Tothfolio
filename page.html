@@ -30,6 +30,107 @@
     <canvas id="star-canvas"></canvas>
     <div id="galaxy"></div>
 
+    <div id="top-bar">
+      <div class="top-logo">DANIELLA <span>//</span> TOTH</div>
+      <div class="top-coords">
+        SECTOR <span>SOL-1</span> &nbsp;&middot;&nbsp; EST<br>
+        STATUS <span class="blink">&#9632;</span> <span>AVAILABLE FOR HIRE</span>
+      </div>
+    </div>
+
+    <!-- draggable solar system map-->
+     <div id="map-wrap">
+      <div id="solar-map">
+
+        <!-- orbit rings -->
+        <div class="orbit-ring" style="width:480px; height:480px; left:2600px; top:1700px;"></div>
+        <div class="orbit-ring" style="width:660px; height:660px; left:2600px; top:1700px;"></div>
+        <div class="orbit-ring" style="width:860px; height:860px; left:2600px; top:1700px;"></div>
+        <div class="orbit-ring" style="width:1080px; height:1080px; left:2600px; top:1700px; border-color:rgba(168,200,232,0.15);"></div>
+        <div class="orbit-ring" style="width:1380px; height:1380px; left:2600px; top:1700px; border-color:rgba(168,200,232,0.12);"></div>
+        <div class="orbit-ring" style="width:1680px; height:1680px; left:2600px; top:1700px; border-color:rgba(168,200,232,0.09);"></div>
+        <div class="orbit-ring" style="width:2060px; height:2060px; left:2600px; top:1700px; border-color:rgba(168,200,232,0.06);"></div>
+        <div class="orbit-ring" style="width:2420px; height:2420px; left:2600px; top:1700px; border-color:rgba(168,200,232,0.04);"></div>
+
+        <!-- asteroid belt between mars and jupiter -->
+        <svg style="position:absolute; left:2600px; top:1700px; width:1230px; height:1230px; transform:translate(-50%,-50%) scaleY(0.38); overflow:visible; pointer-events:none;" viewBox="0 0 1230 1230">
+          <ellipse cx="615" cy="615" rx="612" ry="612" fill="none" stroke="rgba(168,200,232,0.12)" stroke-width="1.5" stroke-dasharray="4 28" stroke-linecap="round"/>
+        </svg>
+
+        <!-- sun -->
+        <div id="sun-node" style="left:2600px; top:1700px;">
+          <model-viewer id="sun-mv" src="assets/model-1.glb" auto-rotate rotation-per-second="2deg" environment-image="neutral" shadow-intensity="0" disable-tap disable-zoom interaction-prompt="none"  camera-controls="false" alt="Sun"></model-viewer>
+          <div class="sun-label">SUN</div>
+        </div>
+
+        <!-- mercury -->
+        <div class="planet-node" id="planet-mercury" data-planet="mercury" style="left:2808px; top:1746px;">
+          <model-viewer class="planet-mv" style="width:56px; height:56px;" src="assets/model-2.glb" auto-rotate rotation-per-second="18deg" environment-image="neutral" shadow-intensity="0" disable-tap disable-zoom interaction-prompt="none" camera-controls="false" alt="Mercury"></model-viewer>
+          <div class="planet-label">Mercury</div>
+          <div class="planet-role">[ HOME ]</div>
+        </div>
+
+        <!-- venus -->
+        <div class="planet-node" id="planet-venus" data-planet="venus" style="left:2314px; top:1763px;">
+          <model-viewer class="planet-mv" style="width:74px; height:74px;" src="assets/model-3.glb" auto-rotate rotation-per-second="14deg" environment-image="neutral" shadow-intensity="0" disable-tap disable-zoom interaction-prompt="none" camera-controls="false" alt="Venus"></model-viewer>
+          <div class="planet-label">Venus</div>
+          <div class="planet-role">[ ABOUT ]</div>
+        </div>
+
+        <!-- earth -->
+        <div class="planet-node" id="planet-earth" data-planet="earth" style="left:2196px; top:1644px;">
+          <model-viewer class="planet-mv" style="width:80px; height:80px;" src="assets/model-4.glb" auto-rotate rotation-per-second="22deg" environment-image="neutral" shadow-intensity="0" disable-tap disable-zoom interaction-prompt="none" camera-controls="false" alt="Earth"></model-viewer>
+          <div class="planet-label">Earth</div>
+          <div class="planet-role">[ PROJECTS ]</div>
+        </div>
+
+        <!-- mars -->
+        <div class="planet-node" id="planet-mars" data-planet="mars" style="left:3107px; top:1630px;">
+          <model-viewer class="planet-mv" style="width:65px; height:65px;" src="assets/model-5.glb" auto-rotate rotation-per-second="20deg" environment-image="neutral" shadow-intensity="0" disable-tap disable-zoom interaction-prompt="none" camera-controls="false" alt="Mars"></model-viewer>
+          <div class="planet-label">Mars</div>
+          <div class="planet-role">[ SKILLS ]</div>
+        </div>
+
+        <!-- jupiter -->
+        <div class="planet-node" id="planet-jupiter" data-planet="jupiter" style="left:1952px; top:1790px;">
+          <model-viewer class="planet-mv" style="width:190px; height:190px;" src="assets/model-6.glb" auto-rotate rotation-per-second="30deg" environment-image="neutral" shadow-intensity="0" disable-tap disable-zoom interaction-prompt="none" camera-controls="false" alt="Jupiter"></model-viewer>
+          <div class="planet-label">Jupiter</div>
+          <div class="planet-role">[ EXPERIENCE ]</div>
+        </div>
+
+        <!-- saturn -->
+        <div class="planet-node" id="planet-saturn" data-planet="saturn" style="left:3389px; top:1809px;">
+          <model-viewer class="planet-mv" style="width:340px; height:340px;" src="assets/model-7.glb" auto-rotate rotation-per-second="26deg" environment-image="neutral" shadow-intensity="0" disable-tap disable-zoom interaction-prompt="none" camera-controls="false" alt="Saturn"></model-viewer>
+          <div class="planet-label">Saturn</div>
+          <div class="planet-role">[ CONTACT ]</div>
+        </div>
+
+        <!-- uranus -->
+        <div class="planet-node" id="planet-uranus" data-planet="uranus" style="left:1938px; top:1400px;">
+          <model-viewer class="planet-mv" style="width:100px; height:100px;" src="assets/model-8.glb" auto-rotate rotation-per-second="16deg" environment-image="neutral" shadow-intensity="0" disable-tap disable-zoom interaction-prompt="none" camera-controls="false" alt="Uranus"></model-viewer>
+          <div class="planet-label">Uranus</div>
+          <div class="planet-role">[ RESUME ]</div>
+        </div>
+
+        <!-- neptune -->
+        <div class="planet-node" id="planet-neptune" data-planet="neptune" style="left:3014px; top:1268px;">
+          <model-viewer class="planet-mv" style="width:94px; height:94px;" src="assets/model-9.glb" auto-rotate rotation-per-second="18deg" environment-image="neutral" shadow-intensity="0" disable-tap disable-zoom interaction-prompt="none" camera-controls="false" alt="Neptune"> </model-viewer>
+          <div class="planet-label">Neptune</div>
+          <div class="planet-role">[ CONNECT ]</div>
+        </div>
+
+      </div>
+     </div>
+
+     <div id="bottom-bar">
+      <div class="bar-instruct">&#8853; drag &amp; scroll to navigate &nbsp;&middot;&nbsp; click a planet to explore</div>
+      <div id="zoom-indicator">
+        <button class="zoom-button" id="button-zoom-out">&#8722;</button>
+        <div class="zoom-value" id="zoom-value">70%</div>
+        <button class="zoom-button" id="button-zoom-in">+</button>
+      </div>
+    </div>
+
     <script src="page.js"></script>
   </body>
 </html>

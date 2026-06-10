@@ -325,7 +325,7 @@ body {
 }
 
 #launch-btn:hover {
-    color: var(--bg);
+    color: var(--background);
     border-color: var(--ice);
     box-shadow: 0 0 30px rgba(168, 200, 232, 0.25);
 }
