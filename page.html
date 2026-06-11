@@ -58,9 +58,10 @@
         </svg>
 
         <!-- sun -->
-        <div id="sun-node" style="left:2600px; top:1700px;">
-          <model-viewer id="sun-mv" src="assets/model-1.glb" auto-rotate rotation-per-second="2deg" environment-image="neutral" shadow-intensity="0" disable-tap disable-zoom interaction-prompt="none"  camera-controls="false" alt="Sun"></model-viewer>
+        <div id="sun-node" data-planet="sun" style="left:2600px; top:1700px;">
+          <model-viewer id="sun-mv" src="assets/model-1.glb" auto-rotate rotation-per-second="2deg" environment-image="neutral" shadow-intensity="0" disable-tap disable-zoom interaction-prompt="none" camera-controls="false" alt="Sun"></model-viewer>
           <div class="sun-label">SUN</div>
+          <div id="sun-click-target"></div>
         </div>
 
         <!-- mercury -->
@@ -148,6 +149,43 @@
     </div>
 
     <button id="zoom-close">&#10005;</button>
+
+    <!-- planet templates -->
+    <div style="display:none">
+
+    <!-- sun / home -->
+    <div id="tpl-sun">
+      <div class="panel-section">
+        <div class="panel-section-label">Home</div>
+        <p class="panel-text">
+          welcome! this portfolio belongs to <span>Daniella Toth</span> - software engineering student at uofg, full-stack dev.
+          navigate the solar system to explore!
+        </p>
+      </div>
+      <div class="panel-divider"></div>
+      <div class="panel-section">
+        <div class="panel-section-label">Quick Nav</div>
+        <ul class="panel-list">
+          <li><span style="color:var(--ice)">Mercury</span> - Education</li>
+          <li><span style="color:var(--ice)">Venus</span> - About</li>
+          <li><span style="color:var(--ice)">Earth</span> - Projects</li>
+          <li><span style="color:var(--ice)">Mars</span> - Skills</li>
+          <li><span style="color:var(--ice)">Jupiter</span> - Experience</li>
+          <li><span style="color:var(--ice)">Saturn</span> - Contact</li>
+          <li><span style="color:var(--ice)">Uranus</span> - Resume</li>
+          <li><span style="color:var(--ice)">Neptune</span> - Connect</li>
+        </ul>
+      </div>
+      <div class="panel-divider"></div>
+      <div class="panel-section">
+        <div class="panel-section-label">Status</div>
+        <div style="display:flex;gap:8px;align-items:center;font-size:0.72rem;color:var(--white-dim)">
+          <span style="color:#7adca0">&#9632;</span> Seeking Summer 2026 co-op
+        </div>
+      </div>
+    </div>
+
+  </div>
 
     <script src="page.js"></script>
   </body>

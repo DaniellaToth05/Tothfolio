@@ -1,5 +1,71 @@
 // solar system page 
 
+// planets
+var PLANETS = {
+
+    sun: { 
+        tag: 'SOL // SECTOR 00', 
+        title: 'Mission <em>Control</em>', 
+        glow: 'rgba(255, 180, 50, 0.6)', 
+        src: 'assets/model-1.glb' 
+    },
+
+    mercury: { 
+        tag: 'MERCURY // SECTOR 01', 
+        title: '<em>Education</em>', 
+        glow: 'rgba(160, 140, 120, 0.5)', src: 'assets/model-2.glb' 
+    },
+
+    venus: { 
+        tag: 'VENUS // SECTOR 02', 
+        title: '<em>About</em> Me',
+        glow: 'rgba(220, 170, 60, 0.5)', 
+        src: 'assets/model-3.glb' 
+    },
+
+    earth: { 
+        tag: 'EARTH // SECTOR 03', 
+        title: '<em>Mission</em> Files', 
+        glow: 'rgba(30, 120, 220, 0.55)', 
+        src: 'assets/model-4.glb' 
+    },
+
+    mars: { 
+        tag: 'MARS // SECTOR 04', 
+        title: '<em>Signal</em> Map', 
+        glow: 'rgba(200, 80, 30, 0.5)',
+        src: 'assets/model-5.glb' 
+    },
+
+    jupiter: { 
+        tag: 'JUPITER // SECTOR 05', 
+        title: '<em>Mission</em> Log', 
+        glow: 'rgba(200, 150, 60, 0.5)', 
+        src: 'assets/model-6.glb' 
+    },
+
+    saturn: { 
+        tag: 'SATURN // SECTOR 06', 
+        title: '<em>Open</em> Comms', 
+        glow: 'rgba(200, 180, 80, 0.45)', 
+        src: 'assets/model-7.glb' 
+    },
+
+    uranus: { 
+        tag: 'URANUS // SECTOR 07', 
+        title: '<em>Resume</em> File',
+        glow: 'rgba(80, 200, 220, 0.45)', 
+        src: 'assets/model-8.glb' 
+    },
+
+    neptune: { 
+        tag: 'NEPTUNE // SECTOR 08', 
+        title: '<em>Deep</em> Space Links', 
+        glow: 'rgba(40, 80, 200, 0.5)',   
+        src: 'assets/model-9.glb' 
+    }
+};
+
 // exit the boot screen after the animation finishes
 setTimeout(function() {
     document.getElementById('boot').classList.add('done');
@@ -390,12 +456,15 @@ var mapState = (function(){
             return;
         }
 
+        var template = document.getElementById('tpl-' + planetId);
+
+
         zoomModel.setAttribute('src', planetData.src);
         zoomModel.setAttribute('alt', planetId);
         zoomModel.style.setProperty('--planet-glow', planetData.glow);
         zoomTag.textContent = planetData.tag;
         zoomTitle.innerHTML = planetData.title;
-        zoomBody.innerHTML = planetData.body;
+        zoomBody.innerHTML = template ? template.innerHTML : '';
         zoomContent.scrollTop = 0;
 
         // saturn has rings that take up a lot of the model-viewer frame so it gets a bigger window than the other planets
@@ -443,6 +512,16 @@ var mapState = (function(){
                 zoomModel.setAttribute('auto-rotate', '');
             }, 300);
         });
+    });
+
+    // sun is also clickable
+    document.getElementById('sun-click-target').addEventListener('click', function(e) {
+        e.stopPropagation();
+        mapState.navTo(2600, 1700);
+        setTimeout(function() {
+            openOverlay('sun');
+            zoomModel.setAttribute('auto-rotate', '');
+        }, 300);
     });
 
     closeBtn.addEventListener('click', closeOverlay);

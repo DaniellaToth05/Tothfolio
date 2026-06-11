@@ -257,9 +257,17 @@ body {
     position: absolute;
     transform: translate(-50%, -50%);
     z-index: 5;
-    pointer-events: none;
+    pointer-events: all;
     width: 280px;
     height: 280px;
+}
+
+#sun-click-target {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10;
 }
 
 #sun-mv {
