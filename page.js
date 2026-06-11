@@ -32,7 +32,7 @@ var PLANETS = {
 
     mars: { 
         tag: 'MARS // SECTOR 04', 
-        title: '<em>Signal</em> Map', 
+        title: '<em>Skill</em> Matrix', 
         glow: 'rgba(200, 80, 30, 0.5)',
         src: 'assets/model-5.glb' 
     },
