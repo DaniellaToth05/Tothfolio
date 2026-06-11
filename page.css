@@ -681,21 +681,22 @@ body {
 
 .mini-card-title {
     font-family: var(--display);
-    font-size: 1.05rem;
+    font-size: 1.5rem;
+    letter-spacing: 0.05em;
     font-weight: 600;
     color: var(--frost);
     margin-bottom: 5px;
 }
 
 .mini-card-desc {
-    font-size: 0.7rem;
+    font-size: 0.9rem;
     color: var(--white-dim);
     line-height: 1.6;
     margin-bottom: 9px;
 }
 
 .panel-link {
-    font-size: 0.67rem;
+    font-size: 0.77rem;
     color: var(--ice);
     text-decoration: none;
     letter-spacing: 0.12em;
