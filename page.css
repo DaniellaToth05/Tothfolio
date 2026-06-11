@@ -260,6 +260,24 @@ body {
     pointer-events: all;
     width: 280px;
     height: 280px;
+    cursor: pointer;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#sun-node:hover #sun-mv {
+    transform: scale(1.08);
+    filter:
+        brightness(1.2)
+        drop-shadow(0 0 90px rgba(255,210,80,.8))
+        drop-shadow(0 0 40px rgba(255,150,40,.4));
+}
+
+#sun-node:hover .sun-label {
+    color: rgba(255,220,120,.95);
+    opacity: 1;
 }
 
 #sun-click-target {
@@ -277,6 +295,8 @@ body {
     --progress-bar-color: transparent;
     --poster-color: transparent;
     animation: sunGlow 4s ease-in-out infinite;
+    pointer-events: none;
+    transition: transform .4s cubic-bezier(0.34,1.56,0.64,1), filter .35s;
 }
 
 #sun-mv::part(default-ar-button),
@@ -296,15 +316,36 @@ body {
 
 .sun-label {
     position: absolute;
-    bottom: -26px;
+    bottom: -46px;
     left: 50%;
     transform: translateX(-50%);
     font-family: var(--display);
-    font-size: 0.9rem;
+    font-size: 1.5rem;
     color: rgba(255, 200, 80, 0.55);
     letter-spacing: 0.3em;
     white-space: nowrap;
     pointer-events: none;
+    transition: color .3s, opacity .3s;
+
+    position: absolute;
+    bottom: -26px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#sun-node .planet-role {
+    position: absolute;
+    bottom: -46px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#sun-node:hover .planet-role {
+    color: var(--ice);
+}
+
+#sun-node .planet-role {
+    transition: color .3s, opacity .3s;
 }
 
 /* planets */
@@ -398,6 +439,7 @@ body {
     pointer-events: none;
 }
 
+
 #zoom-content {
     display: flex;
     flex-direction: column;
@@ -416,6 +458,14 @@ body {
 #zoom-overlay.open #zoom-content {
     opacity: 1;
     transform: scale(1) translateY(0);
+}
+
+#zoom-overlay:not(.open) #zoom-content {
+    visibility: hidden;
+}
+
+#zoom-overlay.open #zoom-content {
+    visibility: visible;
 }
 
 #zoom-model-wrap {
@@ -480,18 +530,20 @@ body {
 }
 
 @keyframes ringRotate {
-    to { transform: rotate(360deg); }
+    to { 
+        transform: rotate(360deg); 
+    }
 }
 
 #zoom-info {
     width: 100%;
-    margin-top: 32px;
+    margin-top: 52px;
     border-top: 1px solid rgba(168, 200, 232, 0.1);
     padding-top: 28px;
 }
 
 .zoom-planet-tag {
-    font-size: 0.58rem;
+    font-size: 0.78rem;
     letter-spacing: 0.28em;
     color: var(--steel);
     text-transform: uppercase;
@@ -513,7 +565,7 @@ body {
 
 .zoom-title {
     font-family: var(--display);
-    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-size: clamp(2.8rem, 5vw, 3.8rem);
     font-weight: 300;
     line-height: 1.1;
     color: var(--frost);
@@ -534,7 +586,7 @@ body {
 }
 
 .panel-section-label {
-    font-size: 0.57rem;
+    font-size: 0.97rem;
     letter-spacing: 0.28em;
     color: var(--gold);
     text-transform: uppercase;
@@ -543,7 +595,7 @@ body {
 }
 
 .panel-text {
-    font-size: 0.76rem;
+    font-size: 0.96rem;
     line-height: 1.9;
     color: var(--white-dim);
 }
@@ -560,7 +612,7 @@ body {
 }
 
 .panel-list li {
-    font-size: 0.73rem;
+    font-size: 0.83rem;
     color: var(--white-dim);
     padding-left: 16px;
     position: relative;
@@ -582,7 +634,7 @@ body {
 }
 
 .panel-tag {
-    font-size: 0.58rem;
+    font-size: 0.68rem;
     padding: 3px 10px;
     border: 1px solid rgba(168, 200, 232, 0.14);
     color: var(--ice);
@@ -609,7 +661,7 @@ body {
 }
 
 .mini-card-status {
-    font-size: 0.54rem;
+    font-size: 0.64rem;
     letter-spacing: 0.15em;
     padding: 2px 6px;
     border: 1px solid;
