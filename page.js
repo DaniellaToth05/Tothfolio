@@ -12,13 +12,13 @@ var PLANETS = {
 
     mercury: { 
         tag: 'MERCURY // SECTOR 01', 
-        title: '<em>About</em>', 
+        title: '<em>About</em> Me', 
         glow: 'rgba(160, 140, 120, 0.5)', src: 'assets/model-2.glb' 
     },
 
     venus: { 
         tag: 'VENUS // SECTOR 02', 
-        title: '<em>Education</em> Me',
+        title: '<em>Education</em>',
         glow: 'rgba(220, 170, 60, 0.5)', 
         src: 'assets/model-3.glb' 
     },
