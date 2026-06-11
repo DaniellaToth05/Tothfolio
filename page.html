@@ -131,6 +131,24 @@
       </div>
     </div>
 
+    <!-- overlay when a planet is clicked on -->
+    <div id="zoom-overlay">
+      <div id="zoom-content">
+        <div id="zoom-model-wrap">
+          <div class="zoom-ring"></div>
+          <div class="zoom-ring-2"></div>
+          <model-viewer id="zoom-mv" auto-rotate rotation-per-second="8deg" camera-controls environment-image="neutral" shadow-intensity="0.3" interaction-prompt="none" alt="Planet" touch-action="pan-y"></model-viewer>
+        </div>
+        <div id="zoom-info">
+          <div class="zoom-planet-tag" id="zoom-tag"></div>
+          <h2 class="zoom-title" id="zoom-title"></h2>
+          <div class="zoom-body" id="zoom-body"></div>
+        </div>
+      </div>
+    </div>
+
+    <button id="zoom-close">&#10005;</button>
+
     <script src="page.js"></script>
   </body>
 </html>

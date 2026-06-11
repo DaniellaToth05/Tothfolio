@@ -372,3 +372,91 @@ var mapState = (function(){
         }
     };
 })();
+
+// planet overlays
+(function() {
+    var overlay = document.getElementById('zoom-overlay');
+    var zoomModel = document.getElementById('zoom-mv');
+    var zoomTag = document.getElementById('zoom-tag');
+    var zoomTitle = document.getElementById('zoom-title');
+    var zoomBody = document.getElementById('zoom-body');
+    var closeBtn = document.getElementById('zoom-close');
+    var zoomContent = document.getElementById('zoom-content');
+    var modelWrap = document.getElementById('zoom-model-wrap');
+
+    function openOverlay(planetId) {
+        var planetData = PLANETS[planetId];
+        if (!planetData) {
+            return;
+        }
+
+        zoomModel.setAttribute('src', planetData.src);
+        zoomModel.setAttribute('alt', planetId);
+        zoomModel.style.setProperty('--planet-glow', planetData.glow);
+        zoomTag.textContent = planetData.tag;
+        zoomTitle.innerHTML = planetData.title;
+        zoomBody.innerHTML = planetData.body;
+        zoomContent.scrollTop = 0;
+
+        // saturn has rings that take up a lot of the model-viewer frame so it gets a bigger window than the other planets
+        if (planetId === 'saturn') {
+            zoomModel.style.width = '520px';
+            zoomModel.style.height = '520px';
+            modelWrap.style.width = '520px';
+            modelWrap.style.height = '520px';
+        } else {
+            zoomModel.style.width = '320px';
+            zoomModel.style.height = '320px';
+            modelWrap.style.width = '320px';
+            modelWrap.style.height = '320px';
+        }
+
+        overlay.classList.add('open');
+        mapState.lock();
+        document.getElementById('top-bar').classList.add('hidden');
+        document.getElementById('bottom-bar').classList.add('hidden');
+    }
+
+    function closeOverlay() {
+        overlay.classList.remove('open');
+        mapState.unlock();
+        document.getElementById('top-bar').classList.remove('hidden');
+        document.getElementById('bottom-bar').classList.remove('hidden');
+        setTimeout(function() {
+            zoomModel.removeAttribute('auto-rotate');
+        }, 600);
+    }
+
+    // click a planet to open the overlay
+    document.querySelectorAll('.planet-node').forEach(function(node) {
+        node.addEventListener('click', function(e) {
+            e.stopPropagation();
+            var planetId = node.dataset.planet;
+            var nodeX = parseFloat(node.style.left);
+            var nodeY = parseFloat(node.style.top);
+
+            // pan the map to center on the planet before opening
+            mapState.navTo(nodeX, nodeY);
+
+            setTimeout(function() {
+                openOverlay(planetId);
+                zoomModel.setAttribute('auto-rotate', '');
+            }, 300);
+        });
+    });
+
+    closeBtn.addEventListener('click', closeOverlay);
+
+    overlay.addEventListener('click', function(e) {
+        if (e.target === overlay) {
+            closeOverlay();
+        }
+    });
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            closeOverlay();
+        }
+    });
+})();
+
+
