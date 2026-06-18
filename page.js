@@ -538,4 +538,33 @@ var mapState = (function(){
     });
 })();
 
+// send contact form
+function sendTransmission(btn) {
+  const name = document.getElementById("contact-name").value.trim();
+  const email = document.getElementById("contact-email").value.trim();
+  const message = document.getElementById("contact-message").value.trim();
+
+  if (!name || !email || !message) {
+    btn.textContent = "⚠ FILL ALL FIELDS";
+    setTimeout(() => btn.textContent = "⌁ TRANSMIT", 2000);
+    return;
+  }
+
+  btn.textContent = "TRANSMITTING...";
+  btn.disabled = true;
+
+  emailjs.send("service_hwnh8aq", "template_g7ek4rs", {
+    name: name,
+    email: email,
+    message: message,
+    title: "Portfolio Contact Form"
+  }).then(() => {
+    btn.textContent = "✓ TRANSMITTED";
+    btn.style.background = "#7adca0";
+  }).catch((err) => {
+    console.error(err);
+    btn.textContent = "✗ FAILED — TRY AGAIN";
+    btn.disabled = false;
+  });
+}
 

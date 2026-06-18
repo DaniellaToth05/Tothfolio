@@ -450,6 +450,7 @@ body {
     width: min(700px, 92vw);
     max-height: 90vh;
     overflow-y: auto;
+    overflow-x: hidden;
     scrollbar-width: thin;
     scrollbar-color: rgba(168, 200, 232, 0.15) transparent;
     padding: 60px 20px 40px;

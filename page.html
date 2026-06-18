@@ -438,10 +438,54 @@
     </div>
   </div>
 
+  <!-- saturn (contact)-->
+   <div id="tpl-saturn">
+    <div class="panel-section">
+      <div class="panel-section-label">Signal Status</div>
+      <p class="panel-text">
+        Currently seeking Summer 2026 co-op in software development, full-stack, or backend engineering.
+        Response time under 24 hours.
+      </p>
+    </div>
+    <div class="panel-divider"></div>
+    <div class="panel-section">
+      <div class="panel-section-label">Frequencies</div>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <div style="display:flex;gap:16px;font-size:0.72rem">
+          <span style="color:var(--steel);min-width:80px;letter-spacing:0.1em">EMAIL</span>
+          <span style="color:var(--gold)">daniellatoth@me.com</span>
+        </div>
+        <div style="display:flex;gap:16px;font-size:0.72rem">
+          <span style="color:var(--steel);min-width:80px;letter-spacing:0.1em">GITHUB</span>
+          <a href="https://github.com/DaniellaToth05" target="_blank" style="color:var(--ice);text-decoration:none">DaniellaToth05</a>
+        </div>
+        <div style="display:flex;gap:16px;font-size:0.72rem">
+          <span style="color:var(--steel);min-width:80px;letter-spacing:0.1em">LINKEDIN</span>
+          <a href="https://linkedin.com/in/daniella-toth-x03" target="_blank" style="color:var(--ice);text-decoration:none">daniella-toth-x03</a>
+        </div>
+      </div>
+    </div>
+    <div class="panel-divider"></div>
+    <div class="panel-section">
+      <div class="panel-section-label">Transmission Form</div>
+      <div style="display:flex;flex-direction:column;gap:11px">
+        <input type="text" id="contact-name" class="contact-input" placeholder="Your name">
+        <input type="email" id="contact-email" class="contact-input" placeholder="your@email.com">
+        <textarea id="contact-message" class="contact-input" placeholder="Your message..." rows="4" style="resize:none"></textarea>
+        <button class="contact-btn" onclick="sendTransmission(this)">⌁ TRANSMIT</button>
+      </div>
+    </div>
+
 
 
   </div>
 
+
+    <!-- email service for the contact form -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script>
+      emailjs.init("sGKah_KPBtlYl7bkg");
+    </script>
     <script src="page.js"></script>
   </body>
 </html>
