@@ -6,7 +6,7 @@
   
     checkbox.addEventListener('change', function () {
       if (checkbox.checked) {
-        window.location.href = '../simple/index.html';
+        window.location.href = 'simple/index.html';
       }
     });
   })();
