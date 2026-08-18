@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Teaching Assistant Experience</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="icon" type="image/png" href="../images/favicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="gradient-bg"></div>
+
+<nav class="nav">
+    <a href="../index.html" class="logo">Daniella Toth</a>
+    <div class="nav-links">
+        <a href="../index.html#experience">Experience</a>
+        <a href="../index.html#contact">Contact</a>
+    </div>
+</nav>
+
+<section class="section report">
+
+    <h2 class="section-title">
+        <span>University of Guelph | Undergraduate Teaching Assistant</span>
+    </h2>
+
+    <div class="report-section animate-on-scroll">
+        <h3>Overview</h3>
+        <p>
+            I have worked as an Undergraduate Teaching Assistant for multiple core computer science
+            courses at the University of Guelph. In this role, I support students during labs,
+            office hours, and assessments while helping them develop confidence in programming
+            and problem-solving.
+        </p>
+        <p>
+            TAing has strengthened my communication skills and reinforced my own understanding
+            of foundational software concepts by explaining them clearly to others.
+        </p>
+    </div>
+
+    <div class="report-section animate-on-scroll">
+        <h3>CIS*1500 — Introduction to Programming</h3>
+        <p>
+            I worked as a Teaching Assistant for CIS*1500 across two terms, supporting students
+            who were often encountering programming for the first time.
+        </p>
+
+        <div class="list-wrap">
+            <ul class="bullet-list">
+                <li>Assisted students during weekly labs and office hours</li>
+                <li>Helped debug C programs involving loops, arrays, functions, and pointers</li>
+                <li>Explained core programming concepts in a clear and approachable way</li>
+                <li>Worked with other TAs and instructors to support student success</li>
+            </ul>
+        </div>
+
+        <p>
+            This role helped me learn how to break down complex ideas and adapt explanations
+            based on a student’s level of understanding.
+        </p>
+    </div>
+
+    <div class="report-section animate-on-scroll">
+        <h3>CIS*2250 — Software Design II</h3>
+        <p>
+            I am currently a Teaching Assistant for CIS*2250, a course focused on the
+            process of software design and the application of best practices for
+            developing and reviewing software in a collaborative setting.
+        </p>
+
+        <p>
+            The course places a strong emphasis on teamwork, communication, and
+            responsibility in software development. Students work in pairs and small
+            groups on design challenges and a substantial team-based software project,
+            using Python as the implementation language.
+        </p>
+
+        <div class="list-wrap">
+            <ul class="bullet-list">
+                <li>Support students during in-person labs focused on pair and group work</li>
+                <li>Assist students with Python-based lab work and project development</li>
+                <li>Help students reason about software design decisions and trade-offs</li>
+                <li>Grade labs, assignments, and exams and return feedback within required timelines</li>
+                <li>Hold weekly office hours and respond to student questions through course communication tools</li>
+                <li>Participate in regular TA meetings and assist with exam invigilation</li>
+            </ul>
+        </div>
+
+        <p>
+            Supporting CIS*2250 has strengthened my ability to communicate software
+            design concepts clearly and to guide students in reflecting on collaboration,
+            design responsibility, and effective development practices.
+        </p>
+    </div>
+
+    <div class="report-section animate-on-scroll">
+        <h3>Key Takeaways</h3>
+        <p>
+            Being a Teaching Assistant has improved my technical communication skills,
+            patience, and confidence. It has also reinforced the importance of writing
+            clear, maintainable code that others can understand.
+        </p>
+    </div>
+
+</section>
+
+<script>
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+            }
+        });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll(".animate-on-scroll").forEach(el => {
+        observer.observe(el);
+    });
+</script>
+
+</body>
+</html>

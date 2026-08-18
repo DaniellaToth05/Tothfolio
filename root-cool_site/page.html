@@ -9,10 +9,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Outfit:wght@200;300;400&family=VT323&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="page.css">
+    <link rel="stylesheet" href="toggle.css">
   </head>
 
   <body>
-
+    <div class="view-switch cool">
+      <span class="view-switch-label">In a rush? Simple view</span>
+      <label class="switch">
+        <input type="checkbox" id="viewToggle">
+        <span class="slider"></span>
+      </label>
+    </div>
     <!-- boot sequence to let page load -->
      <div id="boot">
       <div class="boot-line gold" style="animation-delay: 0.00s">&#9672; SOLAR NAVIGATION SYSTEM v3.0.0</div>
@@ -545,5 +552,7 @@
       emailjs.init("sGKah_KPBtlYl7bkg");
     </script>
     <script src="page.js"></script>
+    <script src="toggle.js"></script>
+    
   </body>
 </html>

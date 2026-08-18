@@ -1,0 +1,115 @@
+.view-toggle {
+    position: fixed;
+    top: 18px;
+    right: 24px;
+    z-index: 2000;
+    font-size: 0.78rem;
+    letter-spacing: 0.06em;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 999px;
+    border: 1px solid rgba(255,255,255,0.15);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  
+  .view-switch {
+    position: fixed;
+    top: 18px;
+    right: 24px;
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 16px;
+    border-radius: 999px;
+    backdrop-filter: blur(10px);
+  }
+  
+  .view-switch-label {
+    font-size: 0.78rem;
+    letter-spacing: 0.06em;
+    white-space: nowrap;
+  }
+  
+  .view-switch.cool {
+    background: rgba(10, 14, 24, 0.55);
+    border: 1px solid rgba(217, 196, 138, 0.25);
+  }
+  .view-switch.cool .view-switch-label {
+    font-family: 'Share Tech Mono', monospace;
+    color: #d9c48a;
+  }
+  
+  .view-switch.simple {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.12);
+  }
+  .view-switch.simple .view-switch-label {
+    font-family: 'Inter', sans-serif;
+    color: rgba(255,255,255,0.85);
+  }
+  
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 22px;
+    flex-shrink: 0;
+  }
+  
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255,255,255,0.15);
+    border-radius: 999px;
+    transition: background 0.25s ease;
+  }
+  
+  .slider::before {
+    content: "";
+    position: absolute;
+    height: 16px;
+    width: 16px;
+    left: 3px;
+    bottom: 3px;
+    background: #fff;
+    border-radius: 50%;
+    transition: transform 0.25s ease;
+  }
+  
+  .view-switch.cool .slider {
+    background: rgba(217, 196, 138, 0.2);
+  }
+  .view-switch.cool input:checked + .slider {
+    background: #d9c48a;
+  }
+  
+  .view-switch.simple .slider {
+    background: rgba(255,255,255,0.15);
+  }
+  .view-switch.simple input:checked + .slider {
+    background: rgba(255,120,50,0.85);
+  }
+  
+  .switch input:checked + .slider::before {
+    transform: translateX(18px);
+  }
+  
+  @media (max-width: 600px) {
+    .view-switch { top: 12px; right: 12px; padding: 6px 12px; }
+    .view-switch-label { font-size: 0.7rem; }
+  }
