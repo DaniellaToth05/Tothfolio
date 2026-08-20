@@ -42,7 +42,7 @@
     <section id="hero" class="hero">
         <div class="hero-content">
             <h1>Software Engineer</h1>
-            <p class="subtitle">growing as a developer, one build at a time.            </p>
+            <p class="subtitle">growing as a developer, one project at a time.            </p>
             <a href="#experience" class="cta">
                 View Work
                 <span>→</span>
@@ -340,7 +340,7 @@
     </section>
 
     <script>
-        // Mouse follower effect
+        // mouse following
         const mouseFollower = document.querySelector('.mouse-follower');
         let mouseX = 0, mouseY = 0;
         let followerX = 0, followerY = 0;
@@ -359,7 +359,6 @@
         }
         animateFollower();
 
-        // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -373,7 +372,6 @@
             });
         });
 
-        // Scroll indicator
         const scrollDots = document.querySelectorAll('.scroll-dot');
         const sections = document.querySelectorAll('section');
 
@@ -391,7 +389,6 @@
             });
         }
 
-        // Scroll dot navigation
         scrollDots.forEach((dot, index) => {
             dot.addEventListener('click', () => {
                 sections[index].scrollIntoView({
@@ -403,7 +400,6 @@
 
         window.addEventListener('scroll', updateScrollIndicator);
 
-        // Intersection Observer for animations
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
@@ -418,7 +414,6 @@
             });
         }, observerOptions);
 
-        // Observe elements for animation
         document.querySelectorAll('.project-card, .skill-category, .about-content p').forEach(el => {
             el.style.opacity = '0';
             el.style.transform = 'translateY(30px)';
@@ -426,12 +421,10 @@
             observer.observe(el);
         });
 
-        // Stagger animation for project cards
         document.querySelectorAll('.project-card').forEach((card, index) => {
             card.style.transitionDelay = `${index * 0.2}s`;
         });
 
-        // Parallax effect for gradient background
         window.addEventListener('scroll', () => {
             const scrolled = window.pageYOffset;
             const gradientBg = document.querySelector('.gradient-bg');

@@ -102,7 +102,7 @@
     background: rgba(255,255,255,0.15);
   }
   .view-switch.simple input:checked + .slider {
-    background: rgba(255,120,50,0.85);
+    background: #e1944d;;
   }
   
   .switch input:checked + .slider::before {
