@@ -249,7 +249,7 @@ body {
 
 .top-tag {
     font-family: var(--mono);
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     letter-spacing: 0.32em;
     color: var(--steel);
     text-transform: uppercase;
@@ -261,7 +261,7 @@ body {
     gap: 12px;
 }
 
-.top-tag::before,
+/* .top-tag::before,
 .top-tag::after {
     content: '';
     display: inline-block;
@@ -271,7 +271,7 @@ body {
 }
 .top-tag::after {
     background: linear-gradient(to left, transparent, var(--steel));
-}
+} */
 
 .landing-name {
     font-family: var(--serif);
@@ -307,6 +307,7 @@ body {
     background: transparent;
     border: 1px solid rgba(168, 200, 232, 0.35);
     padding: 14px 44px;
+    border-radius: 999px;
     cursor: pointer;
     opacity: 0;
     animation: fadeUp 0.7s ease 1.1s forwards;
