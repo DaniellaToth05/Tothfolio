@@ -25,7 +25,7 @@
     align-items: center;
     gap: 10px;
     padding: 8px 16px;
-    border-radius: 999px;
+    border-radius: 9px;
     backdrop-filter: blur(10px);
   }
   
